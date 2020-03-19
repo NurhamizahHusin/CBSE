@@ -23,7 +23,9 @@
                    
                     <p:graphicImage value="#{resource['img/SBM-removebg-preview.png']}" style="height: 100%; position: absolute;left: 250px" />
 
-                      <ul class="navigation">              
+                      <ul class="navigation">
+                        <li><a href="login.xhtml">Login</a></li>
+                        <li><a href="register.xhtml">Register</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="Home.xhtml">Home</a></li>
@@ -37,7 +39,8 @@
                     
                        <h3 style="margin-top:0"></h3>
                        <p:menu style="left:7px; height:700px">
-                           <p:submenu label="Home">                            
+                           <p:submenu label="Home">
+                               <p:menuitem value="Homepage" url="Home.xhtml" action="#{menuView.save}"  icon="pi pi-save" />
                                <p:menuitem value="Summary" url="summary.xhtml" action="#{menuView.save}"  icon="pi pi-save" />   
                            </p:submenu>
                            <p:submenu label="Pocket Money">
