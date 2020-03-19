@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+           <h:outputStylesheet name="./css/main.css"/>      
+    </h:head>
+    
+    
+    
+    <h:body>
+            <p:layout fullPage="true">          
+                <p:layoutUnit position="north" size="120" styleClass="myLayoutStyleClassHeader" >
+                    
+                    
+                   
+                     <p:graphicImage value="#{resource['img/SBM-removebg-preview.png']}" style="height: 100%; position: absolute;left: 250px" />
+
+                        <ul class="navigation">
+                                             
+                        <li><a href="login.xhtml">Login</a></li>
+                        <li><a href="register.xhtml">Register</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="Home.xhtml">Home</a></li>
+                     </ul> 
+                
+                </p:layoutUnit>
+                
+               
+                <p:layoutUnit position="west" size="250"  collapsible="false" styleClass="myLayoutStyleClassMenu">
+                    <h:form>  
+                    
+                       <h3 style="margin-top:0"></h3>
+                        <p:menu style="left:7px; height:700px">
+                           <p:submenu label="Home">
+                               <p:menuitem value="Homepage" url="Home.xhtml" action="#{menuView.save}"  icon="pi pi-save" />
+                               <p:menuitem value="Summary" url="summary.xhtml" action="#{menuView.save}"  icon="pi pi-save" />   
+                           </p:submenu>
+                           <p:submenu label="Pocket Money">
+                               <p:menuitem value="Record Pocket Money" url="recordPocket.xhtml" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                               <p:menuitem value="View Allocation" url="viewAllocation.xhtml" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                               <p:menuitem value="Record Expense" url="recordExpense.xhtml" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                           </p:submenu>
+                           <p:submenu label="Profile">
+                               <p:menuitem value="Profile" url="EditProfile.xhtml" icon="pi pi-home"/>
+                           </p:submenu>
+                           <p:submenu label="Setting">
+                               <p:menuitem value="Logout" url="Home.xhtml" icon="pi pi-home"/>
+                           </p:submenu>
+                       </p:menu>
+                   </h:form>
+                    
+                    
+                </p:layoutUnit>
+
+                <h:form id="registrationForm">
+                    <p:layoutUnit position="center"  styleClass="myLayoutStyleClass">
+                        
+                        <h:form>
+                            <p:breadCrumb>
+                                    <p:menuitem value="Home" url="#" />
+                                    <p:menuitem value="Profile" url="#" />
+                                    <p:menuitem value="Edit Profile" url="#" />
+
+                            </p:breadCrumb>
+                        </h:form>
+        
+        
+                        <p:outputLabel style="font-family: Times New Roman ; text-align: center"><h2>Edit Your Profile Details</h2></p:outputLabel>
+           
+                        <p:messages/>
+                        <h:panelGrid columns="2" style="alignment-adjust: central ; border-style: none ; padding: 30px">
+                              <p:outputLabel value="User ID :" />
+                              <p:inputText id="userId" value="" label="User ID" style="margin-bottom:20px;margin-bottom: 10px"/>    
+
+                              <p:outputLabel value="Name:" style="margin-top:10px"/>
+                              <p:inputText id="name" value="" label="Name" style="margin-bottom:20px;margin-bottom: 10px"/> 
+
+                              <p:outputLabel value="Email :"/>
+                              <p:inputText id="email" value="" label="Email" style="margin-bottom:20px;margin-bottom: 10px"/>
+
+                              <p:outputLabel value="Age :"/>
+                              <p:inputText id="age" value="" style="margin-bottom:20px;margin-bottom: 10px"/>
+
+                              <p:outputLabel value="Course :"/>
+                              <p:inputText id="course" value="" style="margin-bottom:20px;margin-bottom: 10px"/>
+
+                              <p:outputLabel value="Password :"/>
+                              <p:password value="Password :" style="margin-bottom:20px;margin-bottom: 10px"/>
+
+                              <p:outputLabel value=""/>
+                              <p:commandButton value="Save Changes" style="border-radius: 8px;  margin: 40px 50px 75px 10px"/>
+
+                            </h:panelGrid>
+                    </p:layoutUnit>
+                 </h:form>
+            </p:layout>      
+    </h:body>
+</html>
+
