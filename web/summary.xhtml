@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>SBM</title>
+        <title>SBM</title>z
        
     
         <h:outputStylesheet name="./css/main.css"/>
@@ -70,10 +70,38 @@
                     
                     <h:form>
                         <div align="center">
+                            
+                            <h:panelGrid columns="4" cellpadding="10" style="height:150px">   
+                           
+                            <p:outputLabel value="Month:" style="font-size:30px;" />
+                                 <p:selectOneMenu value="">
+                                   <f:selectItem itemValue="January" itemLabel="January"  />
+                                   <f:selectItem itemValue="February" itemLabel="February" />
+                                   <f:selectItem itemValue="March" itemLabel="March" />
+                                   <f:selectItem itemValue="April" itemLabel="April" />
+                                   <f:selectItem itemValue="May" itemLabel="May" />
+                                   <f:selectItem itemValue="June" itemLabel="June" />
+                                   <f:selectItem itemValue="July" itemLabel="July" />
+                                   <f:selectItem itemValue="August" itemLabel="August" />
+                                   <f:selectItem itemValue="September" itemLabel="September" />
+                                   <f:selectItem itemValue="October" itemLabel="October" />
+                                   <f:selectItem itemValue="November" itemLabel="November" />
+                                   <f:selectItem itemValue="December" itemLabel="December" />
+                               </p:selectOneMenu> 
+                            
+                             <p:outputLabel value="Year:" style="font-size:30px;" />
+                                 <p:selectOneMenu value="">
+                                   <f:selectItem itemValue="Year" itemLabel="2020"  />
+                                  
+                               </p:selectOneMenu> 
+                           
+                            
+                            </h:panelGrid>
 
-                            <h:panelGrid columns="3" cellpadding="10">
 
-                            <p:panel id="saving" header="Your Current Saving" closable="true" toggleable="true" style="width: 300px;">
+                            <h:panelGrid columns="3" cellpadding="10">                                                 
+
+                                <p:panel id="saving" header="Your Current Saving" closable="true" toggleable="true" style="width: 300px;">
                                 <h:outputText value="Current Saving Content"></h:outputText></p:panel>
 
                                 <p:panel id="food" header="Spent on Food" closable="true" toggleable="true" style="width: 300px;">
@@ -86,7 +114,7 @@
                                 <h:outputText value="Spent on Transportation Content"></h:outputText></p:panel>
 
                                 <p:panel id="accommodation" header="Spent on Accommodation" closable="true" toggleable="true" style="width: 300px;">
-                                    <h:outputText value="Spent on Accommodation Content"></h:outputText></p:panel>
+                                <h:outputText value="Spent on Accommodation Content"></h:outputText></p:panel>
 
                                 <p:panel id="totalspent" header="Total Spent in a Month" closable="true" toggleable="true" style="width: 300px;">
                                 <h:outputText value="Chart or graph"></h:outputText></p:panel>
