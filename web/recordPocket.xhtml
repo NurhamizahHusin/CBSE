@@ -74,7 +74,7 @@
                     <p:graphicImage value="#{resource['img/pocketMoney.jpg']}" style="height: 90%; position: absolute;left: 800px" />
                     
                     
-                    <p:panel header="Pocket Money Record" style="width:350px; height:230px; border:1px solid black;position: absolute;left: 100px; top:170px; ">
+                    <p:panel header="Pocket Money Record" style="width:350px; height:200px; border:1px solid black;position: absolute;left: 100px; top:170px; ">
                         <p:messages />
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="Pocket Money : " />
@@ -94,14 +94,6 @@
                                 <f:selectItem itemValue="October" itemLabel="October" />
                                 <f:selectItem itemValue="November" itemLabel="November" />
                                 <f:selectItem itemValue="December" itemLabel="December" />
-                            </p:selectOneMenu> 
-
-                             <p:outputLabel value="Income Source:" />
-                              <p:selectOneMenu value="">
-                                <f:selectItem itemValue="Scholarship" itemLabel="Scholarship"  />
-                                <f:selectItem itemValue="Parent" itemLabel="Parent" />
-                                <f:selectItem itemValue="Loan" itemLabel="Loan" />
-                                <f:selectItem itemValue="Self" itemLabel="Self" />
                             </p:selectOneMenu> 
 
                             <p:commandButton value="Submit" action="viewAllocation" />
