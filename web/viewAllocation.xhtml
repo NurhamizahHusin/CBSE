@@ -67,10 +67,29 @@
                     </p:breadCrumb>
                     </h:form>
                     
-                    <h:form>
+                    <h:form id="form">
                         
                     <h1 style="position: absolute; left: 100px; top:50px;"> Your Budget Allocation </h1>
-                    <h:outputText style="position: absolute; left: 100px; top:120px;" value="This is your budget allocation" />
+                    
+                     <p:outputLabel style="position: absolute; left: 100px; top:120px;" value="Your budget allocation for month : " />
+                              <p:selectOneMenu style="position: absolute; left: 380px; top:120px;" value="#{viewAllocationMB.month}">
+                                  <p:ajax listener="#{viewAllocationMB.setViewAllocation()}" update="@form" />
+                                   <f:selectItem itemLabel="Select Month" itemValue="" noSelectionOption="true" />
+                                <f:selectItem itemValue="January" itemLabel="January"  />
+                                <f:selectItem itemValue="February" itemLabel="February" />
+                                <f:selectItem itemValue="March" itemLabel="March" />
+                                <f:selectItem itemValue="April" itemLabel="April" />
+                                <f:selectItem itemValue="May" itemLabel="May" />
+                                <f:selectItem itemValue="June" itemLabel="June" />
+                                <f:selectItem itemValue="July" itemLabel="July" />
+                                <f:selectItem itemValue="August" itemLabel="August" />
+                                <f:selectItem itemValue="September" itemLabel="September" />
+                                <f:selectItem itemValue="October" itemLabel="October" />
+                                <f:selectItem itemValue="November" itemLabel="November" />
+                                <f:selectItem itemValue="December" itemLabel="December" />
+                            </p:selectOneMenu> 
+                    
+                
                     
                     <p:graphicImage value="#{resource['img/allocation.png']}" style="height: 80%; position: absolute;left: 700px; top: 100px" />
                     
@@ -80,13 +99,13 @@
                         <h:panelGrid columns="3" columnClasses="label,RM ,value">
                            <h:outputText value="Wants :" />
                            <h:outputText value="RM " />
-                            <p:inputText value="400"/>
+                           <p:inputText value="#{viewAllocationMB.wants}"/>
                             <h:outputText value="Needs :" />
                              <h:outputText value="RM " />
-                            <p:inputText value="1500"/>
+                            <p:inputText value="#{viewAllocationMB.needs}"/>
                             <h:outputText value="Saving :" />
                              <h:outputText value="RM " />
-                            <p:inputText value="300"/>
+                            <p:inputText value="#{viewAllocationMB.saving}"/>
                         
                         </h:panelGrid>
                     </p:panel>

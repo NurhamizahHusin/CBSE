@@ -78,10 +78,11 @@
                         <p:messages />
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="Pocket Money : " />
-                            <p:inputText value=""/>
+                            <p:inputText value="#{recordMB.pocketMoney}"/>
+                            
                             
                              <p:outputLabel value="Month:" />
-                              <p:selectOneMenu value="">
+                              <p:selectOneMenu value="#{recordMB.month}">
                                 <f:selectItem itemValue="January" itemLabel="January"  />
                                 <f:selectItem itemValue="February" itemLabel="February" />
                                 <f:selectItem itemValue="March" itemLabel="March" />
@@ -96,9 +97,18 @@
                                 <f:selectItem itemValue="December" itemLabel="December" />
                             </p:selectOneMenu> 
 
-                            <p:commandButton value="Submit" action="viewAllocation" />
+                            <p:commandButton value="Submit" action="#{recordMB.intoDatabase}" />
                         </h:panelGrid>
                     </p:panel>
+                    
+                    <p:dialog header="Submitted" widgetVar="submitRecord" minHeight="40">
+                    <h:outputText value="Your pocket money has been recorded" />
+                    </p:dialog>
+                    
+                    <p:dialog header="Record Existed" widgetVar="existed" minHeight="40">
+                    <h:outputText value="The pocket money for the choosen month has already existed" />
+                    </p:dialog>
+                    
                  </h:form>
                 </p:layoutUnit>
 
