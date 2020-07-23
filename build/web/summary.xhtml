@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SBM</title>z
+
+        <h:outputStylesheet name="./css/main.css"/>
+
+    </h:head>
+
+    <h:body>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <p:layout fullPage="true">          
+            <p:layoutUnit position="north" size="120" styleClass="myLayoutStyleClassHeader" >
+
+
+                <p:graphicImage value="#{resource['img/SBM-removebg-preview.png']}" style="height: 100%; position: absolute;left: 250px" />
+
+                <ul class="navigation">               
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="Home.xhtml">Home</a></li>
+                </ul> 
+
+            </p:layoutUnit>
+
+
+            <p:layoutUnit position="west" size="250"  collapsible="false" styleClass="myLayoutStyleClassMenu">
+                <h:form>  
+
+                    <h3 style="margin-top:0"></h3>
+                    <p:menu style="left:7px; height:700px">
+                        <p:submenu label="Home">
+
+                            <p:menuitem value="Summary" url="summary.xhtml" action="#{menuView.save}"  icon="pi pi-save" />   
+                        </p:submenu>
+                        <p:submenu label="Pocket Money">
+                            <p:menuitem value="Record Pocket Money" url="recordPocket.xhtml" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="View Allocation" url="viewAllocation.xhtml" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="Record Expense" url="recordExpense.xhtml" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                        </p:submenu>
+                        <p:submenu label="Profile">
+                            <p:menuitem value="Profile" url="EditProfile.xhtml" icon="pi pi-home"/>
+                        </p:submenu>
+                        <p:submenu label="Setting">
+                            <p:menuitem value="Logout" url="Home.xhtml" icon="pi pi-home"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" styleClass="myLayoutStyleClass">
+
+                <h:form>
+                    <p:breadCrumb>
+                        <p:menuitem value="Home" url="#" />
+                        <p:menuitem value="Homepage" url="#" />
+                        <p:menuitem value="Summary" url="#" />
+
+                    </p:breadCrumb>
+                </h:form>
+
+
+                <h:form id="form">
+                    <div align="center">
+
+                        <h:panelGrid columns="4" cellpadding="10" style="height:150px">   
+
+                            <p:outputLabel value="Month:" style="font-size:30px;" />
+                            <p:selectOneMenu value="#{summaryMB.month}">
+                                <p:ajax listener="#{summaryMB.summaryUpdate()}" update="@form" />
+                                 <f:selectItem itemLabel="Select Month" itemValue="" noSelectionOption="true" />
+                                <f:selectItem itemValue="January" itemLabel="January"  />
+                                <f:selectItem itemValue="February" itemLabel="February" />
+                                <f:selectItem itemValue="March" itemLabel="March" />
+                                <f:selectItem itemValue="April" itemLabel="April" />
+                                <f:selectItem itemValue="May" itemLabel="May" />
+                                <f:selectItem itemValue="June" itemLabel="June" />
+                                <f:selectItem itemValue="July" itemLabel="July" />
+                                <f:selectItem itemValue="August" itemLabel="August" />
+                                <f:selectItem itemValue="September" itemLabel="September" />
+                                <f:selectItem itemValue="October" itemLabel="October" />
+                                <f:selectItem itemValue="November" itemLabel="November" />
+                                <f:selectItem itemValue="December" itemLabel="December" />
+                            </p:selectOneMenu> 
+
+                            <p:outputLabel value="Year:" style="font-size:30px;" />
+                            <p:selectOneMenu value="">
+                                <f:selectItem itemValue="Year" itemLabel="2020"  />
+
+                            </p:selectOneMenu> 
+
+
+                        </h:panelGrid>
+
+
+                        <h:panelGrid columns="3" cellpadding="10">    
+                            
+                             <p:panel id="clothes" header="Spent on Your Wants" closable="true" toggleable="true" style="width: 500px;">
+                                                     
+                             <div id="wants" style="width: 450px; height: 300px;"></div>
+
+                            <script type="text/javascript">
+                                google.charts.load('current', {'packages': ['corechart']});
+                                google.charts.setOnLoadCallback(drawChart);
+
+                                function drawChart() {
+
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Total', 'Amount'],
+                                        ['Total Spent', #{summaryMB.wantsTotal}],
+                                        ['Budget Balance',#{summaryMB.wantsBalanced}],
+                                    ]);
+
+                                    var options = {
+                                        title: 'Wants'
+                                    };
+
+                                    var chart = new google.visualization.PieChart(document.getElementById('wants'));
+
+                                    chart.draw(data, options);
+                                }
+                            </script>
+                                
+                            </p:panel>
+
+                            <p:panel id="food" header="Spent on Your Needs" closable="true" toggleable="true" style="width: 500px;">       
+                            
+                                  <div id="needs" style="width: 450px; height: 300px;"></div>
+
+                            <script type="text/javascript">
+                                google.charts.load('current', {'packages': ['corechart']});
+                                google.charts.setOnLoadCallback(drawChart);
+
+                                function drawChart() {
+
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Total', 'Amount'],
+                                        ['Total Spent', #{summaryMB.needsTotal}],
+                                        ['Budget Balance',#{summaryMB.needsBalanced}],
+                                    ]);
+
+                                    var options = {
+                                        title: 'Needs'
+                                    };
+
+                                    var chart = new google.visualization.PieChart(document.getElementById('needs'));
+
+                                    chart.draw(data, options);
+                                }
+                            </script>
+                            
+                            </p:panel>
+   
+                             <p:panel id="saving" header="Your Current Saving" closable="true" toggleable="true" style="width: 500px;">
+
+                                <div id="saving" style="width: 450px; height: 300px;"></div>
+
+                                <script type="text/javascript">
+                                    google.charts.load('current', {'packages': ['corechart']});
+                                    google.charts.setOnLoadCallback(drawChart);
+
+                                    function drawChart() {
+
+                                        var data = google.visualization.arrayToDataTable([
+                                            ['Total', 'Amount'],
+                                            ['Total Spent', #{summaryMB.savingTotal}],
+                                            ['Budget Balance', #{summaryMB.savingBalanced}],
+                                        ]);
+
+                                        var options = {
+                                            title: 'Saving'
+                                        };
+
+                                        var chart = new google.visualization.PieChart(document.getElementById('saving'));
+
+                                        chart.draw(data, options);
+                                    }
+                                </script>
+
+
+                            </p:panel>
+
+                        </h:panelGrid>
+
+                    </div>
+                </h:form>
+
+
+            </p:layoutUnit>
+
+        </p:layout>
+
+
+
+    </h:body>
+</html>
+

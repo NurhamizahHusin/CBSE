@@ -5,9 +5,10 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-           <h:outputStylesheet name="./css/main.css"/>      
+           <h:outputStylesheet name="./css/main.css"/>    
+                 
+
     </h:head>
-    
     
     
     <h:body>
@@ -72,31 +73,29 @@
            
                         <p:messages/>
                         <h:panelGrid columns="2" style="alignment-adjust: central ; border-style: none ; padding: 30px">
-                              <p:outputLabel value="User ID :" />
-                              <p:inputText id="userId" value="" label="User ID" style="margin-bottom:20px;margin-bottom: 10px"/>    
+                              <p:outputLabel value="Username :" />
+                              <p:outputLabel  value="#{loginMB.username}" style="margin-bottom:20px;margin-bottom: 10px"/>    
 
                               <p:outputLabel value="Name:" style="margin-top:10px"/>
-                              <p:inputText id="name" value="" label="Name" style="margin-bottom:20px;margin-bottom: 10px"/> 
+                              <p:inputText id="name" value="#{editProfileMB.name}" label="Name" style="margin-bottom:20px;margin-bottom: 10px"/> 
 
                               <p:outputLabel value="Email :"/>
-                              <p:inputText id="email" value="" label="Email" style="margin-bottom:20px;margin-bottom: 10px"/>
-
-                              <p:outputLabel value="Age :"/>
-                              <p:inputText id="age" value="" style="margin-bottom:20px;margin-bottom: 10px"/>
-
-                              <p:outputLabel value="Course :"/>
-                              <p:inputText id="course" value="" style="margin-bottom:20px;margin-bottom: 10px"/>
+                              <p:inputText id="email" value="#{editProfileMB.email}" label="Email" style="margin-bottom:20px;margin-bottom: 10px"/>
 
                               <p:outputLabel value="Password :"/>
-                              <p:password value="Password :" style="margin-bottom:20px;margin-bottom: 10px"/>
+                              <p:password value="#{editProfileMB.password}" style="margin-bottom:20px;margin-bottom: 10px"/>
 
                               <p:outputLabel value=""/>
-                              <p:commandButton value="Save Changes" style="border-radius: 8px;  margin: 40px 50px 75px 10px"/>
+                              <p:commandButton value="Save Changes" action="#{editProfileMB.updateDatabase()}" style="border-radius: 8px;  margin: 40px 50px 75px 10px"/>
 
                             </h:panelGrid>
                     </p:layoutUnit>
+                    
+                    <p:dialog header="Updated" widgetVar="update" minHeight="40">
+                    <h:outputText value="Your profile has been updated" />
+                    </p:dialog>
+                    
                  </h:form>
             </p:layout>      
     </h:body>
 </html>
-
