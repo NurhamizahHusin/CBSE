@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.com/">
+
+<xs:element name="checkExistingPocketMoney" type="tns:checkExistingPocketMoney"/>
+
+<xs:element name="checkExistingPocketMoneyResponse" type="tns:checkExistingPocketMoneyResponse"/>
+
+<xs:element name="convertMonth" type="tns:convertMonth"/>
+
+<xs:element name="convertMonthResponse" type="tns:convertMonthResponse"/>
+
+<xs:element name="getAllocation" type="tns:getAllocation"/>
+
+<xs:element name="getAllocationResponse" type="tns:getAllocationResponse"/>
+
+<xs:element name="getBudgetTotal" type="tns:getBudgetTotal"/>
+
+<xs:element name="getBudgetTotalResponse" type="tns:getBudgetTotalResponse"/>
+
+<xs:element name="getSummaryTotal" type="tns:getSummaryTotal"/>
+
+<xs:element name="getSummaryTotalResponse" type="tns:getSummaryTotalResponse"/>
+
+<xs:element name="loginAuthentication" type="tns:loginAuthentication"/>
+
+<xs:element name="loginAuthenticationResponse" type="tns:loginAuthenticationResponse"/>
+
+<xs:element name="recordExpense" type="tns:recordExpense"/>
+
+<xs:element name="recordPocketMoney" type="tns:recordPocketMoney"/>
+
+<xs:element name="registerAccount" type="tns:registerAccount"/>
+
+<xs:element name="registerAccountResponse" type="tns:registerAccountResponse"/>
+
+<xs:element name="updateProfile" type="tns:updateProfile"/>
+
+<xs:element name="viewAllocation" type="tns:viewAllocation"/>
+
+<xs:element name="viewAllocationResponse" type="tns:viewAllocationResponse"/>
+
+<xs:complexType name="checkExistingPocketMoney">
+<xs:sequence>
+<xs:element name="loggedInUser" type="xs:string" minOccurs="0"/>
+<xs:element name="month" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkExistingPocketMoneyResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSummaryTotal">
+<xs:sequence>
+<xs:element name="loggedInUser" type="xs:string" minOccurs="0"/>
+<xs:element name="month" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSummaryTotalResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="recordExpense">
+<xs:sequence>
+<xs:element name="loggedInUser" type="xs:string" minOccurs="0"/>
+<xs:element name="month" type="xs:string" minOccurs="0"/>
+<xs:element name="categoriesID" type="xs:string" minOccurs="0"/>
+<xs:element name="amount" type="xs:double"/>
+<xs:element name="date" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateProfile">
+<xs:sequence>
+<xs:element name="loggedInUser" type="xs:string" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllocation">
+<xs:sequence>
+<xs:element name="pocketMoney" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllocationResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registerAccount">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registerAccountResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginAuthentication">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginAuthenticationResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewAllocation">
+<xs:sequence>
+<xs:element name="loggedInUser" type="xs:string" minOccurs="0"/>
+<xs:element name="month" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewAllocationResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="recordPocketMoney">
+<xs:sequence>
+<xs:element name="loggedInUser" type="xs:string" minOccurs="0"/>
+<xs:element name="pocketMoney" type="xs:double"/>
+<xs:element name="month" type="xs:string" minOccurs="0"/>
+<xs:element name="allocation" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBudgetTotal">
+<xs:sequence>
+<xs:element name="loggedInUser" type="xs:string" minOccurs="0"/>
+<xs:element name="month" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBudgetTotalResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="convertMonth">
+<xs:sequence>
+<xs:element name="date" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="convertMonthResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

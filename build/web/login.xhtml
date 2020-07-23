@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SBM</title>
+       
+    
+        <h:outputStylesheet name="./css/main.css"/>
+ 
+        
+     
+    </h:head>
+    
+    
+    
+    <h:body>
+            <p:layout fullPage="true">          
+                <p:layoutUnit position="north" size="120" styleClass="myLayoutStyleClassHeader" >
+                
+                   
+                    <p:graphicImage value="#{resource['img/SBM-removebg-preview.png']}" style="height: 100%; position: absolute;left: 250px" />
+
+                      <ul class="navigation">
+                        <li><a href="login.xhtml">Login</a></li>
+                        <li><a href="register.xhtml">Register</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="Home.xhtml">Home</a></li>
+                     </ul> 
+                
+                </p:layoutUnit>
+                
+               
+
+                <p:layoutUnit position="center" styleClass="myLayoutStyleClass">
+                                    
+                     <center><h:form id="loginForm">
+                            <p:panel header="Login" style="width: 500px;">
+                                <table>
+                                <tr>
+                                    <td>Username: </td>
+                                    <td><p:inputText value="#{loginMB.username}"/></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Password: </td>
+                                    <td><p:password value="#{loginMB.password}"/></td>
+
+                                </tr>
+                                </table>
+                               <br/>
+
+
+                              <p:outputLabel value=""/>
+                              <p:commandButton action="#{loginMB.login()}" value="Login" update="loginForm"/>
+
+                            </p:panel>
+                             
+                             <p:dialog header="Incorrect password" widgetVar="incorrect" minHeight="40">
+                                   <h:outputText value="Your password is incorrect"/>
+                                   </p:dialog>
+                             
+                     </h:form></center>
+                    
+                   
+                </p:layoutUnit>
+
+            </p:layout>
+      
+   
+        
+    </h:body>
+</html>
