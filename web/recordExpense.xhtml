@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>SBM</title>
        
@@ -72,21 +73,25 @@
                                     <table>
                                     <tr>
                                         <td><p:outputLabel for="inline" value="Date: " /> </td>
-                                        <td><p:calendar id="inline" value="#{calendar.date}" mode="popup" /> </td>
+                                        <td><p:calendar id="inline" value="#{recordExpenseMB.date}" mode="popup" mask="true" maxlength="10" pattern="dd/mm/yy"> 
+                                                <f:convertDateTime pattern="dd/MM/yyyy" /></p:calendar>
+                                    
+                                    </td>
+                                      
                                     </tr>
 
                                     <tr>
                                         <td>Amount: </td>
-                                        <td><p:inputText value="#{userController.record}"/></td>
+                                        <td><p:inputText value="#{recordExpenseMB.amount}"/></td>
 
                                     </tr>
                                         <tr>
                                             <td>Expensed On:</td>
-                                            <td><p:selectOneRadio value="expensedOn" layout="pageDirection">
+                                            <td><p:selectOneRadio value="#{recordExpenseMB.categoriesID}" layout="pageDirection">
 
-                                            <f:selectItem itemValue="want" itemLabel="Wants (Shopping , Food , Hobbies , etc...)"/>
-                                            <f:selectItem itemValue="need" itemLabel="Needs (Groceries, Utilities, Housing , etc...)"/>
-                                            <f:selectItem itemValue="saving" itemLabel="Saving"/>
+                                            <f:selectItem itemValue="1" itemLabel="Wants (Shopping , Food , Hobbies , etc...)"/>
+                                            <f:selectItem itemValue="2" itemLabel="Needs (Groceries, Utilities, Housing , etc...)"/>
+                                            <f:selectItem itemValue="3" itemLabel="Saving"/>
                                             
 
                                                 </p:selectOneRadio></td>
@@ -94,11 +99,18 @@
                                     </table>
                                    <br/>
 
-
-                                  <p:outputLabel value=""/>
-                                  <p:commandButton action="#{userController.register}" value="Record" update="recordForm"/>
+                                  
+                              
+                                   <p:commandButton action="#{recordExpenseMB.insertexpense()}" value="Record" onclick="PF('success').show();"/>
+                                 
 
                                 </p:panel>
+                              
+                                
+                                   <p:dialog header="Expense has been recorded" widgetVar="success" minHeight="40">
+                                   <h:outputText value="Your expense has been recorded"/>
+                                   </p:dialog>
+                              
                              </h:form></center>
                     
                    
@@ -110,4 +122,3 @@
         
     </h:body>
 </html>
-
