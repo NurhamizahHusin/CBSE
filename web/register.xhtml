@@ -42,26 +42,26 @@
                             <table>
                             <tr>
                                 <td>Username: </td>
-                                <td><p:inputText value="#{userController.register}"/></td>
+                                <td><p:inputText value="#{loginMB.username}" required="true" requiredMessage="Please enter your username"/></td>
                             </tr>
 
                             <tr>
                                 <td>Full Name: </td>
-                                <td><p:inputText value="#{userController.record}"/></td>
+                                <td><p:inputText value="#{loginMB.name}" required="true" requiredMessage="Please enter your full name"/></td>
 
                             </tr>
 
                                 <tr>
 
                                     <td>Email: </td>
-                                <td><p:inputText value="#{userController.record}"/></td>
+                                    <td><p:inputText value="#{loginMB.email}" required="true" requiredMessage="Please enter your email"/></td>
 
                                 </tr>
 
                                 <tr>
 
                                     <td>Password: </td>
-                                <td><p:password value="#{userController.record}"/></td>
+                                    <td><p:password value="#{loginMB.password}" required="true" requiredMessage="Please enter your password"/></td>
                                 </tr>
 
                               
@@ -69,7 +69,7 @@
                             </table>
                            <br/>
 
-                          <p:commandButton action="#{userController.register}" value="Register" update="registrationForm"/>
+                           <p:commandButton action="#{loginMB.register()}" value="Register" update="registrationForm"/>
 
                         </p:panel>
                                 </h:form></center>
@@ -83,4 +83,3 @@
         
     </h:body>
 </html>
-

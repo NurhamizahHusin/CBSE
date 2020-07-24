@@ -41,13 +41,13 @@
                             <p:panel header="Login" style="width: 500px;">
                                 <table>
                                 <tr>
-                                    <td>Email: </td>
-                                    <td><p:inputText value="#{userController.record}"/></td>
+                                    <td>Username: </td>
+                                    <td><p:inputText value="#{loginMB.username}"/></td>
                                 </tr>
 
                                 <tr>
                                     <td>Password: </td>
-                                    <td><p:password value="#{userController.record}"/></td>
+                                    <td><p:password value="#{loginMB.password}"/></td>
 
                                 </tr>
                                 </table>
@@ -55,9 +55,14 @@
 
 
                               <p:outputLabel value=""/>
-                              <p:commandButton action="#{userController.login}" value="Login" update="loginForm"/>
+                              <p:commandButton action="#{loginMB.login()}" value="Login" update="loginForm"/>
 
                             </p:panel>
+                             
+                             <p:dialog header="Incorrect password" widgetVar="incorrect" minHeight="40">
+                                   <h:outputText value="Your password is incorrect"/>
+                                   </p:dialog>
+                             
                      </h:form></center>
                     
                    
@@ -69,4 +74,3 @@
         
     </h:body>
 </html>
-
